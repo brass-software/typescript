@@ -10,3 +10,5 @@ type Package struct {
 }
 
 func NewPackageFromGo(pkg *ast.Package) (*Package, error)
+
+func (p *Package) WriteToDir(dir string) error
