@@ -2,6 +2,7 @@ package typescript
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/brass-software/nodejs"
 )
@@ -25,3 +26,5 @@ func (m *ImportMap) Add(i *nodejs.Import) error {
 	m.Imports = append(m.Imports, i)
 	return nil
 }
+
+func (m *ImportMap) Write(w io.Writer) error
