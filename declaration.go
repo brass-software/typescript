@@ -14,4 +14,6 @@ type Declaration struct {
 	Type    *Type
 }
 
-func (decl *Declaration) Write(w io.Writer) error
+func (decl *Declaration) Write(w io.Writer) error {
+	return nil
+}

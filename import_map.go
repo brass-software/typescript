@@ -3,15 +3,13 @@ package typescript
 import (
 	"fmt"
 	"io"
-
-	"github.com/brass-software/nodejs"
 )
 
 type ImportMap struct {
-	Imports []*nodejs.Import
+	Imports []*Import
 }
 
-func (m *ImportMap) Add(i *nodejs.Import) error {
+func (m *ImportMap) Add(i *Import) error {
 	for _, imp := range m.Imports {
 		if imp.From == i.From {
 			if i.Default != "" {
@@ -27,4 +25,12 @@ func (m *ImportMap) Add(i *nodejs.Import) error {
 	return nil
 }
 
-func (m *ImportMap) Write(w io.Writer) error
+func (m *ImportMap) Write(w io.Writer) error {
+	for _, imp := range m.Imports {
+		_, err := fmt.Fprintf(w, imp.String())
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
